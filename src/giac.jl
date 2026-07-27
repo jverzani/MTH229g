@@ -50,6 +50,10 @@ function integrate(ex::Giac.GiacInput, xab::Tuple)
     F(b) - F(a)
 end
 
+function integrate(ex::Giac.GiacInput, x::Giac.GiacExpr)
+    Giac.Commands.integrate(ex, x)
+end
+
 ## plot recipe...
 
 

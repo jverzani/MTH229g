@@ -32,6 +32,19 @@ using Reexport
 @reexport using Giac
 @reexport using BinderPlots
 
+## BinderPlots
+BinderPlots.PlotlyLight.settings.layout.width = 800
+BinderPlots.PlotlyLight.settings.layout.height = 500
+
+
+function CalculusWithJulia.plotif(f::Function, g::Function, a::Real, b::Real; kwargs...)
+    plot(f, a, b; line=(1, :black), title="Plot of f colored when g ≥ 0")
+    gg = x -> g(x) ≥ 0 ? f(x) : NaN
+    plot!(gg; line=(5, :red, :dot))
+end
+
+
+
 ## simpleexpressions
 import CalculusWithJulia.Roots.CommonSolve: solve
 function solve(ex::SimpleExpressions.SymbolicEquation, I::Interval; kwargs...)
